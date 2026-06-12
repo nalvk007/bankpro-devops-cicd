@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/YOUR_REPO/bankpro-devops-cicd.git'
+                git 'https://github.com/nalvk007/bankpro-devops-cicd.git'
             }
         }
 

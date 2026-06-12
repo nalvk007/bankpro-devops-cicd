@@ -2,11 +2,14 @@
   become: yes
 
   tasks:
-    - name: Stop container if running
+    - name: Pull latest image
+      shell: docker pull nalinivk/bankpro-app:latest
+
+    - name: Stop running container
       shell: docker stop bankpro || true
 
-    - name: Remove container
+    - name: Remove old container
       shell: docker rm bankpro || true
 
     - name: Run new container
-      shell: docker run -d -p 8080:8080 --name bankpro bankpro-app
+      shell: docker run -d -p 8080:8080 --name bankpro nalinivk/bankpro-app:latest
