@@ -1,0 +1,12 @@
+- hosts: aws
+  become: yes
+
+  tasks:
+    - name: Stop container if running
+      shell: docker stop bankpro || true
+
+    - name: Remove container
+      shell: docker rm bankpro || true
+
+    - name: Run new container
+      shell: docker run -d -p 8080:8080 --name bankpro bankpro-app

@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/YOUR_REPO/bankpro-devops-cicd.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('app') {
+                    sh 'mvn clean package'
+                }
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t bankpro-app ./docker'
+            }
+        }
+
+        stage('Deploy via Ansible') {
+            steps {
+                sh 'ansible-playbook -i ansible/inventory.ini ansible/deploy.yml'
+            }
+        }
+    }
+}
