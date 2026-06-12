@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/nalvk007/bankpro-devops-cicd.git'
-            }
-        }
 
         stage('Build') {
             steps {
