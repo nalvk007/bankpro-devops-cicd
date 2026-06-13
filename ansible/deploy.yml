@@ -11,7 +11,7 @@
     - name: Remove old container
       shell: docker rm bankpro || true
 
-    - name: Ensure clean deployment
+    - name: Run new container
       shell: |
-         docker rm -f bankpro || true
+        docker rm -f bankpro || true
         docker run -d -p 8080:8080 --name bankpro nalinivk/bankpro-app:latest
