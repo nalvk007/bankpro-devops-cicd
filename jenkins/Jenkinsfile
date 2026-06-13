@@ -11,10 +11,10 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
-            steps {
-                sh 'docker build -t bankpro-app ./docker'
-            }
+	stage('Docker Build') {
+    	    steps {
+        	sh 'docker build -t bankpro-app -f docker/Dockerfile .'
+    	    }
         }
 
 	stage('Docker Info') {
