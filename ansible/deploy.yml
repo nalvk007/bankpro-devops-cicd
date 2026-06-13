@@ -14,4 +14,4 @@
     - name: Run new container
       shell: |
         docker rm -f bankpro || true
-        docker run -d -p 8080:8080 --name bankpro nalinivk/bankpro-app:latest
+        docker run -d -p 8081:8080 --name bankpro nalinivk/bankpro-app:latest
